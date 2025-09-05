@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
 
     const isValidPassword = user.password === encryptedPassword;
     if (isValidPassword) {
-      return this.router.navigate(['/genesis']);
+      return this.router.navigate(['/home']);
     } else {
       this.errorMessage = "The password is incorrect.";
     }
