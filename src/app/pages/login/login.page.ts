@@ -58,4 +58,9 @@ export class LoginPage implements OnInit {
       password: this.password,
     })
   }
+
+  onLoginSuccess(nombre: string) {
+    localStorage.setItem('user_name', nombre);
+  }
+
 }
