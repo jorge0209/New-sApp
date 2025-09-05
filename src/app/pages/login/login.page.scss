@@ -1,0 +1,44 @@
+ion-content {
+  --background: #f9fafb; // gris claro elegante
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+ion-card {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+ion-card-content {
+  padding: 25px 20px;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin: 12px 0;
+  color: #2563eb; // azul moderno
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #1d4ed8;
+}
+
+app-button {
+  width: 100%;
+  display: block;
+  --border-radius: 10px;
+}
+
+app-input {
+  margin-bottom: 15px;
+  display: block;
+}

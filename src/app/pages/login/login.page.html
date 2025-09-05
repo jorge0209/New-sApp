@@ -33,6 +33,12 @@
 
         <ion-row>
           <ion-col>
+            <a [routerLink]="['/register']">Create an account</a>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
             <app-button
               type="submit"
               color="primary"
@@ -40,12 +46,8 @@
               [disabled]="loginForm.invalid"
             ></app-button>
           </ion-col>
-
-          <ion-col>
-            <a [routerLink]="['/register']">Don't have an account? Sign up here</a>
-          </ion-col>
         </ion-row>
-
+        
       </ion-card-content>
     </ion-card>
   </form>

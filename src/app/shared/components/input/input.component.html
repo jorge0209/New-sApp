@@ -1,3 +1,8 @@
-<p>
-  input works!
-</p>
+<ion-input class="border_blue"
+[formControl] = "control"
+  [type]="type"
+  [label]="label"
+  [placeholder]="placeholder"
+  labelPlacement="floating"
+  (keyup) = "onType($event)"
+></ion-input>
