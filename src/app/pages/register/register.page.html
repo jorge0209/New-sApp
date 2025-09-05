@@ -5,9 +5,95 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">register</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <form [formGroup]="registerForm"
+  (ngSubmit)="doRegister()">
+
+    <ion-card>
+      <ion-card-content>
+
+        <ion-row>
+          <ion-col>
+              <app-input
+              type="text"
+              label="Name"
+              placeholder="Jane"
+              [control]="name"
+            ></app-input>
+          </ion-col>
+
+          <ion-col>
+            <app-input
+              type="text"
+              label="Last Name"
+              placeholder="Doe"
+              [control]="lastName"
+            ></app-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label>Country</ion-label>
+            <ion-select formControlName="country" interface="popover">
+              <ion-select-option *ngFor="let c of countries" [value]="c.name">
+                {{ c.flag }} {{ c.name }}
+              </ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <app-input
+            type="email"
+            label="Email"
+            placeholder="example@prueba.com"
+            [control]="email"
+            ></app-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <app-input
+            type="password"
+            label="Password"
+            placeholder=""
+            [control]="password"
+            ></app-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <app-input
+            type="password"
+            label="Confirm Password"
+            placeholder=""
+            [control]="confirmPassword"
+            ></app-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-text color="danger"
+          *ngIf="registerForm.hasError('passwordMismatch') && confirmPassword.touched">
+          The passwords do not match
+        </ion-text>
+
+
+        <ion-row>
+          <ion-col>
+            <app-button
+            type="submit"
+            color="primary"
+            value="Register"
+            [disabled]="registerForm.invalid"
+          ></app-button>
+          </ion-col>
+
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </form>
 </ion-content>
