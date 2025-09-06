@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="article">
+    <img *ngIf="article.urlToImage" [src]="article.urlToImage" />
+
+    <ion-card-header>
+      <ion-card-title>{{ article.title }}</ion-card-title>
+      <ion-card-subtitle>{{ article.source?.name }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ article.description }}</p>
+      <p>{{ article.content }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" color="secondary" (click)="openInBrowser()">
+    read the full news article
+  </ion-button>
+</ion-content>

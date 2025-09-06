@@ -1,5 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NewsService } from 'src/app/shared/services/news/news'; 
 
 @Component({
   selector: 'app-home',
@@ -8,11 +9,31 @@ import { ActivatedRoute } from '@angular/router';
   standalone: false,
 })
 export class HomePage implements OnInit {
-  public home!: string;
-  private activatedRoute = inject(ActivatedRoute);
-  constructor() {}
+  articles: any[] = [];
+  category: string = 'general';
+
+  constructor(
+    private route: ActivatedRoute,
+    private newsService: NewsService
+  ) {}
 
   ngOnInit() {
-    this.home = this.activatedRoute.snapshot.paramMap.get('id') as string;
+    // Suscribirse a cambios en queryParams
+    this.route.queryParams.subscribe(params => {
+      this.category = params['category'] || 'general';
+      this.loadNews();
+    });
+  }
+
+  loadNews() {
+    if (this.category && this.category !== 'general') {
+      this.newsService.getByCategory(this.category).subscribe(res => {
+        this.articles = res.articles;
+      });
+    } else {
+      this.newsService.getTopHeadlines().subscribe(res => {
+        this.articles = res.articles;
+      });
+    }
   }
 }
